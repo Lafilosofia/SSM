@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+ <!-- namespace包名.类名 -->
+<mapper namespace="com.lhz.lhz_Spring_SSM01.login.mapper.UserMapper">
+	<!-- 解决数据库字段和实体类字段不一致 -->
+	<resultMap type="com.lhz.lhz_Spring_SSM01.login.entity.User" id="rm">
+		<result property="userId" column="id"/>
+		<result property="userName" column="user_name"/>
+		<result property="userPwd" column="user_password"/>
+		<result property="userSal" column="sal"/>
+		<result property="userAge" column="user_age"/>
+	</resultMap>
+	<select id = "findUserByName" parameterType="string" resultMap="rm">
+		select * from user where user_name = #{name};
+	</select>
+	
+</mapper>
